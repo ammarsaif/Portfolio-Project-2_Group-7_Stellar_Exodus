@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+	public GameObject PlayerBulletFire;	
+	public GameObject BulletPosition;	
+
     public float speed = 5f;
 
     // Start is called before the first frame update
@@ -15,6 +18,12 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		// fire bullet when spacebar is pressed
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			GameObject bullet = Instantiate(PlayerBulletFire, BulletPosition.transform.position, Quaternion.identity);
+			bullet.transform.position = BulletPosition.transform.position;
+		}
+
         float x = Input.GetAxisRaw ("Horizontal"); // the value will be -1, 0, or 1 (for left, no input, and right)
         float y = Input.GetAxisRaw ("Vertical"); // the value will be -1, 0, or 1 (for down, no input, and up)
 
