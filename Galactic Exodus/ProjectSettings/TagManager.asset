@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Bullet
+  - PlayerShip
+  - Asteroid 3
+  - Asteroid 1
+  - Asteroid 2
   layers:
   - Default
   - TransparentFX

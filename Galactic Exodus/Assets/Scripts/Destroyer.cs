@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    void DestroyGameObject () {
+    public float destroyDelay = 2f; // Time before destruction
 
-    }
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Destroy(gameObject, destroyDelay);
     }
 }
