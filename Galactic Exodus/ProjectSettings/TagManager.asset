@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Enemy
   - Bullet
+<<<<<<< Updated upstream
+=======
+  - PlayerShip
+  - Asteroid
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

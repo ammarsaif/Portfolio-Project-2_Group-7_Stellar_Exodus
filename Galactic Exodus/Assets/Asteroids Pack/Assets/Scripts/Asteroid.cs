@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; // For restarting the game
@@ -12,28 +12,11 @@ public class Asteroid : MonoBehaviour
     public float maxSpeed = 5f; // Maximum asteroid speed
     private float speed;
 
-    private Renderer asteroidRenderer;
-    private Material asteroidMaterial;
-    private Color originalColor;
-
     void Start()
     {
         // Assign a random speed for variation
         speed = Random.Range(minSpeed, maxSpeed);
-
-        // Set asteroid HP to its max HP
         currentHitpoints = maxHitpoints;
-
-        // Get the asteroid's renderer and store its original color
-        asteroidRenderer = GetComponent<Renderer>();
-        if (asteroidRenderer != null)
-        {
-            asteroidMaterial = asteroidRenderer.material;
-            originalColor = asteroidMaterial.color;
-
-            // Enable emission if not already enabled
-            asteroidMaterial.EnableKeyword("_EMISSION");
-        }
     }
 
     void Update()
@@ -49,19 +32,17 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D col) 
     {
-        // Check if the asteroid was hit by a bullet
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (col.CompareTag("Bullet")) 
         {
-            TakeDamage(); // Reduce asteroid HP
-            // Destroy the bullet
-            Destroy(collision.gameObject);
+            TakeDamage(); // Reduce HP
+            Destroy(col.gameObject); // Destroy bullet
         }
-
-        if (collision.gameObject.CompareTag("Player"))
+        else if (col.CompareTag("Player")) // 🚀 Destroy player on collision
         {
-            Destroy(collision.gameObject);
+            Destroy(col.gameObject);
+            SpawnExplosion();
         }
     }
 
@@ -71,7 +52,6 @@ public class Asteroid : MonoBehaviour
 
         if (currentHitpoints <= 0)
         {
-            // If HP reaches 0, spawn explosion and destroy the asteroid
             SpawnExplosion();
             Destroy(gameObject);
         }
@@ -81,12 +61,17 @@ public class Asteroid : MonoBehaviour
     {
         if (explosionPrefab != null)
         {
-            // Instantiate explosion at asteroid's position
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-            // Make the explosion move downward
-            ExplosionMovement explosionMovement = explosion.AddComponent<ExplosionMovement>();
-            explosionMovement.SetSpeed(speed);
+            // Ensure explosion animation plays
+            Animator explosionAnimator = explosion.GetComponent<Animator>();
+            if (explosionAnimator != null)
+            {
+                explosionAnimator.Play("ExplosionAnimation"); // Name must match exactly in Unity
+            }
+
+            // Destroy the explosion after animation completes
+            Destroy(explosion, 0.5f); // Adjust timing based on animation length
         }
     }
 }

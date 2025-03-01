@@ -61,4 +61,12 @@ public class NewBehaviourScript : MonoBehaviour
 		//Update the player's position
 		transform.position = pos;
 	}
+
+	void OnTriggerEnter2D(Collider2D col) 
+	{
+		if (col.CompareTag("Asteroid")) 
+		{
+			Destroy(gameObject);
+		}
+	}
 }
