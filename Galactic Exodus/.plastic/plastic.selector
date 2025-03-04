@@ -1,4 +1,0 @@
-repository "Galactic Exodus@ammar_middi@cloud"
-  path "/"
-    br "/main"
-    co "/main"
