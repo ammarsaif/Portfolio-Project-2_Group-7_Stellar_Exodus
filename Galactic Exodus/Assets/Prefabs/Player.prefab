@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66c82a0638859f4dba93ebd36c03fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerBulletFire: {fileID: 7328748677084488250, guid: 806803c7754039940b3806af6d0eda86, type: 3}
+  PlayerBulletFire: {fileID: 7328748677084488250, guid: 5305bb308c4f0c34c8b68e88810bb651, type: 3}
   BulletPosition: {fileID: 4198813949666995379}
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 3368766315624512177, guid: 748e7ed88159aaa4a9cc2ddadd68a795, type: 3}
   speed: 4
 --- !u!50 &-6502138683141755992
 Rigidbody2D:
