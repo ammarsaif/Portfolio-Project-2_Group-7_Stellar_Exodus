@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement; // For restarting the game
 
 public class Asteroid : MonoBehaviour
 {
-    public GameObject explosionPrefab;
-    public int maxHitpoints; // Set this in the Inspector for each asteroid type
+    public GameObject explosionPrefab; // Explosion prefab
+    public int maxHitpoints = 3; // Set this in the Inspector for each asteroid
     private int currentHitpoints;
     public float minSpeed = 2f; // Minimum asteroid speed
     public float maxSpeed = 5f; // Maximum asteroid speed
@@ -49,19 +49,20 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    // 2D Collision Detection
+    void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the asteroid was hit by a bullet
         if (collision.gameObject.CompareTag("Bullet"))
         {
             TakeDamage(); // Reduce asteroid HP
-            // Destroy the bullet
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject); // Destroy the bullet immediately
         }
 
-        if (collision.gameObject.CompareTag("Player"))
+        // Check if asteroid collides with the spaceship
+        if (collision.gameObject.CompareTag("PlayerShip"))
         {
-            Destroy(collision.gameObject);
+            DestroyPlayerShip(collision.gameObject); // Handle spaceship destruction
         }
     }
 
@@ -73,7 +74,7 @@ public class Asteroid : MonoBehaviour
         {
             // If HP reaches 0, spawn explosion and destroy the asteroid
             SpawnExplosion();
-            Destroy(gameObject);
+            Destroy(gameObject); // Destroy the asteroid
         }
     }
 
@@ -83,10 +84,19 @@ public class Asteroid : MonoBehaviour
         {
             // Instantiate explosion at asteroid's position
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
-            // Make the explosion move downward
-            ExplosionMovement explosionMovement = explosion.AddComponent<ExplosionMovement>();
-            explosionMovement.SetSpeed(speed);
+            Destroy(explosion, 2f); // Destroy the explosion after 2 seconds
         }
+    }
+
+    void DestroyPlayerShip(GameObject spaceship)
+    {
+        // Handle spaceship destruction logic
+        Animator playerAnimator = spaceship.GetComponent<Animator>();
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetBool("DIE", true); // Play the death animation
+        }
+
+        Destroy(spaceship, 1f); // Destroy the spaceship after 1 second
     }
 }
