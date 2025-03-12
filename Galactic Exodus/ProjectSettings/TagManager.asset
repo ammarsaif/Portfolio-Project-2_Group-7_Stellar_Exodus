@@ -8,6 +8,10 @@ TagManager:
   - Bullet
   - PlayerShip
   - Asteroid
+  - PlanetExplode
+  - Blackhole
+  - Moon
+  - Planet
   layers:
   - Default
   - TransparentFX
