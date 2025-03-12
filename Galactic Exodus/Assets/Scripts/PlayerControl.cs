@@ -5,14 +5,16 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
 	public GameObject PlayerBulletFire;	
-	public GameObject BulletPosition;	
+	public GameObject BulletPosition;
+	public GameObject explosionPrefab; // Reference to the ExplosionGo prefab
 
     public float speed = 5f;
+	 private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,4 +63,17 @@ public class NewBehaviourScript : MonoBehaviour
 		//Update the player's position
 		transform.position = pos;
 	}
+
+	void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            // Instantiate the explosion when collision happens
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+            // Destroy the spaceship after explosion
+            Destroy(gameObject);
+        }
+    }
+	
 }
