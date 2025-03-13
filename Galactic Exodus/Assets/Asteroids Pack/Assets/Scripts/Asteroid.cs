@@ -88,15 +88,10 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    void DestroyPlayerShip(GameObject spaceship)
+    void DestroyPlayerShip(GameObject PlayerShip)
     {
-        // Handle spaceship destruction logic
-        Animator playerAnimator = spaceship.GetComponent<Animator>();
-        if (playerAnimator != null)
-        {
-            playerAnimator.SetBool("DIE", true); // Play the death animation
-        }
+        
 
-        Destroy(spaceship, 1f); // Destroy the spaceship after 1 second
+        Destroy(PlayerShip, 1f); // Destroy the spaceship after 1 second
     }
 }
