@@ -59,11 +59,13 @@ public class Asteroid : MonoBehaviour
             Destroy(collision.gameObject); // Destroy the bullet immediately
         }
 
+        /*
         // Check if asteroid collides with the spaceship
         if (collision.gameObject.CompareTag("PlayerShip"))
         {
             DestroyPlayerShip(collision.gameObject); // Handle spaceship destruction
         }
+        */
     }
 
     void TakeDamage()
@@ -88,10 +90,13 @@ public class Asteroid : MonoBehaviour
         }
     }
 
+    /*
     void DestroyPlayerShip(GameObject PlayerShip)
     {
         
 
         Destroy(PlayerShip, 1f); // Destroy the spaceship after 1 second
     }
+
+    */
 }

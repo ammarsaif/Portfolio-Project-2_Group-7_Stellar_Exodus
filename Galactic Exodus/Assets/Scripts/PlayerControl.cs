@@ -64,16 +64,17 @@ public class NewBehaviourScript : MonoBehaviour
 		transform.position = pos;
 	}
 
-	void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
-            // Instantiate the explosion when collision happens
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
-            // Destroy the spaceship after explosion
-            Destroy(gameObject);
+            // Try to get the Health component
+            Health health = GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(25); // You can customize the damage value
+            }
         }
     }
-	
+
 }
