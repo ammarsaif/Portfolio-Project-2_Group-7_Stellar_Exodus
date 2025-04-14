@@ -9,5 +9,6 @@ public class Destroyer : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, destroyDelay);
+        Debug.LogWarning("Destroyed");
     }
 }

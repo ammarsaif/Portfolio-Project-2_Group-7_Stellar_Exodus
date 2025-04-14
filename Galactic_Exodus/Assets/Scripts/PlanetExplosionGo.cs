@@ -4,28 +4,39 @@ using UnityEngine;
 
 public class PlanetExplosionGo : MonoBehaviour
 {
-   public GameObject explosionEffect; // Assign this in the Inspector
+    public GameObject explosionEffect;         // Assign explosion prefab in Inspector
+    public AudioClip AsteroidExplosionSound;   // Assign explosion sound in Inspector
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet")) // If hit by a bullet
         {
             Explode();
+
             Destroy(other.gameObject); // Destroy the bullet
         }
     }
 
-
     void Explode()
     {
-        // Spawn explosion effect and detach it from the planet
+        // Spawn explosion effect
         GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         explosion.transform.SetParent(null); // Detach from planet
 
-        // Destroy the planet immediately
+        // Play explosion sound at planet's position
+        if (AsteroidExplosionSound != null)
+        {
+            AudioSource.PlayClipAtPoint(AsteroidExplosionSound, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Explosion sound not assigned in Inspector.");
+        }
+
+        // Destroy the planet
         Destroy(gameObject);
 
-        // Destroy the explosion effect after 0.5 seconds
+        // Destroy explosion effect after 0.5 seconds
         Destroy(explosion, 0.5f);
     }
 }

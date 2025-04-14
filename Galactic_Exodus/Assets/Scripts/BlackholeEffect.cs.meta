@@ -3,7 +3,9 @@ guid: f0fd3eb9b915b7c49b2c533cbee4af8f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ExplosionGo: {instanceID: 0}
+  - BlackHoleCollisionSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -6,9 +6,13 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public static NewBehaviourScript Instance; // Singleton instance
 
-    public GameObject PlayerBulletFire;    
+    public GameObject PlayerBulletFire;
     public GameObject BulletPosition;
     public GameObject explosionPrefab; // Reference to the explosion prefab
+    public AudioClip gunFireSound;
+    public AudioClip TakingDamageSound;
+    public AudioClip GainingHealthSound;
+    public AudioClip PlayerDestructionSound;
     public float speed = 5f;
     public float autoMoveSpeed = 2f; // Speed for automatic Y movement
 
@@ -45,9 +49,19 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         // Fire bullet when spacebar is pressed
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject bullet = Instantiate(PlayerBulletFire, BulletPosition.transform.position, Quaternion.identity);
+
+            // Play gun sound at bullet position
+            if (gunFireSound != null)
+            {
+                AudioSource.PlayClipAtPoint(gunFireSound, BulletPosition.transform.position);
+            }
+            else
+            {
+                Debug.LogWarning("Gun fire sound not assigned!");
+            }
         }
 
         float x = Input.GetAxisRaw("Horizontal"); // Left & Right movement
@@ -89,37 +103,46 @@ public class NewBehaviourScript : MonoBehaviour
         transform.position = pos;
     }
 
-  void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Asteroid"))
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        HealthManager.Instance.TakeDamage();
-        if (asteriodsplash != null)
+        if (collision.gameObject.CompareTag("Asteroid"))
         {
-            asteriodsplash.SetBool("Red", true);
-            Invoke("setfalse",0.41f); // Assuming 'IsAsteroidHit' is the bool parameter
-        }
-        
-    }
+            HealthManager.Instance.TakeDamage();
+            if (asteriodsplash != null)
+            {
+                asteriodsplash.SetBool("Red", true);
 
-    if (collision.gameObject.CompareTag("HealthBar"))
-    {
-        HealthManager.Instance.IncreaseHealth();
-        healthsplash.SetBool("Green",true);
-        Invoke("stopgreen",0.41f);
-        
-        // Destroy the HealthBar object
-        Destroy(collision.gameObject);
+                if (TakingDamageSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(TakingDamageSound, transform.position);
+                }
+                Invoke("setfalse", 0.41f); // Assuming 'IsAsteroidHit' is the bool parameter
+            }
+
+        }
+
+        if (collision.gameObject.CompareTag("HealthBar"))
+        {
+            HealthManager.Instance.IncreaseHealth();
+            healthsplash.SetBool("Green", true);
+            if (GainingHealthSound != null)
+            {
+                AudioSource.PlayClipAtPoint(GainingHealthSound, transform.position);
+            }
+            Invoke("stopgreen", 0.41f);
+
+            // Destroy the HealthBar object
+            Destroy(collision.gameObject);
+        }
     }
-}
-public void stopgreen()
+    public void stopgreen()
     {
-         healthsplash.SetBool("Green",false);
+        healthsplash.SetBool("Green", false);
     }
-public void setfalse()
-{
-    asteriodsplash.SetBool("Red", false);
-}
+    public void setfalse()
+    {
+        asteriodsplash.SetBool("Red", false);
+    }
 
 
     public void DisableColliderTemporarily()
@@ -139,20 +162,24 @@ public void setfalse()
 
     public void HandlePlayerDestruction()
     {
+        if (PlayerDestructionSound != null)
+        {
+            AudioSource.PlayClipAtPoint(PlayerDestructionSound, transform.position);
+        }
         GameManager.instance.gameover();
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     public void destrcution()
     {
-        damagesplash.SetBool("Yellow",true);
+        damagesplash.SetBool("Yellow", true);
     }
     public void stopdestruction()
     {
-       Invoke("stopred",0.41f);
+        Invoke("stopred", 0.41f);
     }
     public void stopred()
     {
-        damagesplash.SetBool("Yellow",false);
+        damagesplash.SetBool("Yellow", false);
     }
 }

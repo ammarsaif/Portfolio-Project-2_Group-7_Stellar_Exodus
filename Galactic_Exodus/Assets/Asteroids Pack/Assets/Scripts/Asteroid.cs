@@ -7,6 +7,7 @@ using UnityEngine.SocialPlatforms.Impl; // For restarting the game
 public class Asteroid : MonoBehaviour
 {
     public GameObject explosionPrefab; // Explosion prefab
+    public AudioClip asteroidExplosionSound;
     public int maxHitpoints = 3; // Set this in the Inspector for each asteroid
     private int currentHitpoints;
     public float minSpeed = 2f; // Minimum asteroid speed
@@ -61,26 +62,26 @@ public class Asteroid : MonoBehaviour
         }
 
         // Check if asteroid collides with the spaceship
-     
+
     }
 
     void TakeDamage()
-{
-    currentHitpoints--;
-
-    if (currentHitpoints <= 0)
     {
-        // Notify CountManager that an asteroid was destroyed
-        if (CountManager.instance != null)
-        {
-            CountManager.instance.AsteroidDestroyed();
-        }
+        currentHitpoints--;
 
-        // If HP reaches 0, spawn explosion and destroy the asteroid
-        SpawnExplosion();
-        Destroy(gameObject);
+        if (currentHitpoints <= 0)
+        {
+            // Notify CountManager that an asteroid was destroyed
+            if (CountManager.instance != null)
+            {
+                CountManager.instance.AsteroidDestroyed();
+            }
+
+            // If HP reaches 0, spawn explosion and destroy the asteroid
+            SpawnExplosion();
+            Destroy(gameObject);
+        }
     }
-}
 
 
     void SpawnExplosion()
@@ -90,11 +91,24 @@ public class Asteroid : MonoBehaviour
             // Instantiate explosion at asteroid's position
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(explosion, 2f);
+
+            // Play explosion sound
+            if (asteroidExplosionSound != null)
+            {
+                AudioSource.PlayClipAtPoint(asteroidExplosionSound, transform.position);
+            }
+            else
+            {
+                Debug.LogWarning("Asteroid explosion sound not assigned!");
+            }
+
+            // Score updates and splash effects
             ScoreManager.Instance.IncrementScore();
             NewBehaviourScript.Instance.destrcution();
-            NewBehaviourScript.Instance.stopdestruction(); // Destroy the explosion after 2 seconds
+            NewBehaviourScript.Instance.stopdestruction();
         }
     }
 
-   
+
+
 }

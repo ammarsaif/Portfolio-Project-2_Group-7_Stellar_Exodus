@@ -197,7 +197,15 @@ MonoBehaviour:
   PlayerBulletFire: {fileID: 7328748677084488250, guid: 5305bb308c4f0c34c8b68e88810bb651, type: 3}
   BulletPosition: {fileID: 4198813949666995379}
   explosionPrefab: {fileID: 3368766315624512177, guid: 748e7ed88159aaa4a9cc2ddadd68a795, type: 3}
+  gunFireSound: {fileID: 8300000, guid: 1e940d15337ad1e43b0cc1b2430d7c06, type: 3}
   speed: 5
+  autoMoveSpeed: 2
+  asteriodsplash: {fileID: 0}
+  healthsplash: {fileID: 0}
+  damagesplash: {fileID: 0}
+  defaultYOffsetFromBottom: 1
+  returnToDefaultSpeed: 2
+  autoMoveEnabled: 1
 --- !u!1 &4198813949666995379
 GameObject:
   m_ObjectHideFlags: 0

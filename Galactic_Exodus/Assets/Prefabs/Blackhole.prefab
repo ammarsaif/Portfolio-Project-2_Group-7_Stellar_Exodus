@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionGo: {fileID: 3368766315624512177, guid: 748e7ed88159aaa4a9cc2ddadd68a795, type: 3}
+  BlackHoleCollisionSound: {fileID: 8300000, guid: 929fd214252d7034d93c9463bf63e091, type: 3}
 --- !u!114 &-364110580056657306
 MonoBehaviour:
   m_ObjectHideFlags: 0

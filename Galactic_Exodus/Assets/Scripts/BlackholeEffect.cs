@@ -1,26 +1,47 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlackholeEffect : MonoBehaviour
 {
-    public GameObject ExplosionGo; // 🔹 Make sure this is public so it appears in Inspector
+    public GameObject ExplosionGo;     // Assign explosion prefab in Inspector
+    public AudioClip BlackHoleCollisionSound;         // Assign Gun5_1 clip in Inspector
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("PlayerShip")) // Ensure the tag matches the spaceship
+        if (col.CompareTag("PlayerShip"))
         {
-            // Instantiate explosion at spaceship position
-            Instantiate(ExplosionGo, col.transform.position, Quaternion.identity);
-
-            // Destroy the spaceship immediately
-            Destroy(col.gameObject);
-            Invoke("Dead",1f);
-           
+            StartCoroutine(DestroyShipWithEffect(col.gameObject));
         }
     }
-    public void Dead()
+
+    private IEnumerator DestroyShipWithEffect(GameObject ship)
     {
-         HealthManager.Instance.SetHealthToZero();
+        // Instantiate explosion
+        GameObject explosion = Instantiate(ExplosionGo, ship.transform.position, Quaternion.identity);
+
+        // Play sound at that position
+        if (BlackHoleCollisionSound != null)
+        {
+            AudioSource.PlayClipAtPoint(BlackHoleCollisionSound, ship.transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Gun sound not assigned in Inspector!");
+        }
+
+        // Optionally: hide spaceship visuals immediately (optional)
+        SpriteRenderer sr = ship.GetComponent<SpriteRenderer>();
+        if (sr != null)
+            sr.enabled = false;
+
+        // Wait for explosion duration (adjust as needed)
+        yield return new WaitForSeconds(1f);
+
+        // Set health to zero
+        HealthManager.Instance.SetHealthToZero();
+
+        // Destroy the ship after delay
+        Destroy(ship);
     }
 }
+
