@@ -4,6 +4,8 @@ using UnityEngine;
 public class StaticSpawner : MonoBehaviour
 {
     public GameObject[] staticPrefabs; // Array for two prefabs
+    public float minTimer = 0;
+    public float maxTimer = 5;
     private float spawnHeight = 5f; // Spawn 5 units above player
 
     void Start()
@@ -15,7 +17,7 @@ public class StaticSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(0f, 5.0f)); // Wait randomly between 0 to 25 seconds
+            yield return new WaitForSeconds(Random.Range(minTimer, maxTimer)); // Wait randomly between 0 to 25 seconds
             SpawnObject();
         }
     }
