@@ -6,7 +6,7 @@ public class StaticSpawner : MonoBehaviour
     public GameObject[] staticPrefabs; // Array for two prefabs
     public float minTimer = 0;
     public float maxTimer = 5;
-    private float spawnHeight = 5f; // Spawn 5 units above player
+    private float spawnHeight = 10f; // Spawn 10 units above player
 
     void Start()
     {

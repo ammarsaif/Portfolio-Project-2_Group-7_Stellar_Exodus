@@ -4,7 +4,7 @@ using UnityEngine;
 public class HealthSpawner : MonoBehaviour
 {
     public GameObject[] staticPrefabs; // Array for two prefabs
-    private float spawnHeight = 5f; // Spawn 5 units above player
+    private float spawnHeight = 10f; // Spawn 5 units above player
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class HealthSpawner : MonoBehaviour
 
         spawnedObject.transform.position = new Vector2(randomX, NewBehaviourScript.Instance.transform.position.y + spawnHeight);
 
-        // Destroy after 15 seconds
+        // Destroy after 30 seconds
         Destroy(spawnedObject, 30f);
     }
 }
