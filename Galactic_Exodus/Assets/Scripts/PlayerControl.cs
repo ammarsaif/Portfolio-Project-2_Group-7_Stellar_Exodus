@@ -22,7 +22,7 @@ public class NewBehaviourScript : MonoBehaviour
     public Animator healthsplash;
     public Animator damagesplash;
 
-    public float defaultYOffsetFromBottom = 1f;
+    public float defaultYOffsetFromBottom;
     public float returnToDefaultSpeed = 2f;
 
     public bool autoMoveEnabled = true; // auto move in y direction
@@ -66,6 +66,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         float x = Input.GetAxisRaw("Horizontal"); // Left & Right movement
         float y = Input.GetAxisRaw("Vertical");   // Up & Down movement
+
         Vector2 direction = new Vector2(x, y).normalized; // Allow full movement control
 
         Move(direction);
@@ -83,7 +84,9 @@ public class NewBehaviourScript : MonoBehaviour
 
         Vector2 pos = transform.position;
         pos.x += direction.x * speed * Time.deltaTime; // X movement
-                                                       //pos.y += ((direction.y * speed) + (autoMoveEnabled ? autoMoveSpeed : 0f)) * Time.deltaTime; // Y movement
+        float verticalSpeed = (direction.y * speed) + (autoMoveEnabled ? autoMoveSpeed : 0f);
+        pos.y += verticalSpeed * Time.deltaTime;
+        //pos.y += ((direction.y * speed * Time.deltaTime) + (autoMoveEnabled ? autoMoveSpeed : 0f)) * Time.deltaTime; // Y movement
 
         if (direction.y != 0)
         {
