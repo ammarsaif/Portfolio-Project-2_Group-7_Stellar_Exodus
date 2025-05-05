@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9201088968200860863}
   - component: {fileID: 3835142799549808489}
   - component: {fileID: 9220196117700686217}
+  - component: {fileID: 5650069757324788049}
   - component: {fileID: 1375664361547517152}
   m_Layer: 0
   m_Name: PlanetExplosion
@@ -101,6 +102,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 3341407529908571923}
   AsteroidExplosionSound: {fileID: 8300000, guid: c401d00c96b512e488d2e3bf5d111509, type: 3}
+--- !u!50 &5650069757324788049
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267393323390517577}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &1375664361547517152
 CircleCollider2D:
   m_ObjectHideFlags: 0
