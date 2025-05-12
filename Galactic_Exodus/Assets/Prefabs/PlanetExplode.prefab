@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2740679500918210503}
   - component: {fileID: 1090468469795507412}
   - component: {fileID: 6075109660649009093}
+  - component: {fileID: 260602161109803785}
   m_Layer: 0
   m_Name: PlanetExplode
   m_TagString: Untagged
@@ -98,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423c37a0beb22d24dae7a13149f38e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 3489729414868594938, guid: 82ebe6a3b4f50244ca1d87c24ba06461, type: 3}
+  maxHealth: 100
+  explosionPrefab: {fileID: 3489729414868594938, guid: 82ebe6a3b4f50244ca1d87c24ba06461, type: 3}
   AsteroidExplosionSound: {fileID: 8300000, guid: c401d00c96b512e488d2e3bf5d111509, type: 3}
-  destroyTimer: 0
-  durationToDestroy: 0
+  destroyTimer: 3
+  durationToDestroy: 1
 --- !u!58 &6075109660649009093
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,3 +139,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 10
+--- !u!114 &260602161109803785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931580745300195173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56b452dfe6e20f439e37e6be05d578f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 20

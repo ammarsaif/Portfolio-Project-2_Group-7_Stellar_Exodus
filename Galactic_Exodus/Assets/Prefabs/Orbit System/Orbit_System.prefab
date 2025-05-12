@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3741966995278432189}
   - component: {fileID: 1316471783248953453}
   - component: {fileID: 8261286636224146907}
+  - component: {fileID: 2265348667865902409}
   m_Layer: 0
   m_Name: Moon
   m_TagString: Moon
@@ -130,12 +131,26 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0021152496, y: 0.008529067}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &2265348667865902409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556213309138571825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46c9bbb775185f4a9ad8c8a2fba268e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSound: {fileID: 8300000, guid: a28f97506cbe82d479cd46f40fa6efe0, type: 3}
+  damageAmount: 0.2
 --- !u!1 &4572500184744591774
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +162,7 @@ GameObject:
   - component: {fileID: 4528454358756016310}
   - component: {fileID: 3933790136898929121}
   - component: {fileID: 7188723072222429134}
+  - component: {fileID: 1171049384090501681}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Planet
@@ -250,12 +266,26 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &1171049384090501681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572500184744591774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46c9bbb775185f4a9ad8c8a2fba268e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSound: {fileID: 8300000, guid: a28f97506cbe82d479cd46f40fa6efe0, type: 3}
+  damageAmount: 0.2
 --- !u!1 &7541265951666649391
 GameObject:
   m_ObjectHideFlags: 0
