@@ -6155,7 +6155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillImage: {fileID: 590035280}
-  fillIncreasePerAsteroid: 0.2
+  fillIncreasePerAsteroid: 0.1
 --- !u!4 &472709103
 Transform:
   m_ObjectHideFlags: 0
@@ -19511,6 +19511,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950549028}
   m_CullTransparentMesh: 1
+--- !u!1001 &1966538982
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932716064192808924, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+      propertyPath: m_Name
+      value: PlanetExplode
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
 --- !u!1 &1977907879
 GameObject:
   m_ObjectHideFlags: 0
@@ -25210,3 +25267,4 @@ SceneRoots:
   - {fileID: 8644733545259701149}
   - {fileID: 7527622730200696777}
   - {fileID: 1715021242}
+  - {fileID: 1966538982}

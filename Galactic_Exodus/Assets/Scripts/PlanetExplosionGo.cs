@@ -1,44 +1,73 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetExplosionGo : MonoBehaviour
+public class PlanetExplosion : MonoBehaviour
 {
-    public GameObject explosionEffect;         // Assign explosion prefab in Inspector
-    public AudioClip AsteroidExplosionSound;   // Assign explosion sound in Inspector
-    public float destroyTimer;
-    public float durationToDestroy;
+    [Header("Health Settings")]
+    public float maxHealth = 100f;
+    private float currentHealth;
 
+    [Header("Explosion Settings")]
+    public GameObject explosionPrefab;
+    public AudioClip AsteroidExplosionSound;   // Explosion sound
+    public float destroyTimer = 0f;
+    public float durationToDestroy = 3f;
 
+    private HealthManager healthManager;
 
-    private void Update()
+    void Start()
     {
-        if (destroyTimer < durationToDestroy)
+        currentHealth = maxHealth;
+        healthManager = HealthManager.Instance; // Access Singleton HealthManager
+    }
+
+    void Update()
+    {
+        if (destroyTimer > 0)
         {
             destroyTimer += Time.deltaTime;
-        }
-        else
-        {
-            Explode();
+
+            if (destroyTimer >= durationToDestroy)
+            {
+                Explode();
+            }
         }
     }
 
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+
+        if (healthManager != null)
+        {
+            healthManager.TakeDamage(); // Use HealthManager's TakeDamage
+        }
+
+        if (currentHealth <= 0 && destroyTimer == 0)
+        {
+            destroyTimer = 0.01f; // Start the destruction timer
+        }
+    }
 
     void Explode()
     {
-        // Disable the SpriteRenderer immediately to hide the planet
+        // Hide the planet sprite
         GetComponent<SpriteRenderer>().enabled = false;
-        GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        Destroy(explosion, 2f); // Destroy explosion after 1 second
+
+        // Trigger explosion effect
+        if (explosionPrefab)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+            Destroy(explosion, 2f);
+        }
+
         // Play explosion sound
-        if (AsteroidExplosionSound != null)
+        if (AsteroidExplosionSound)
         {
             AudioSource.PlayClipAtPoint(AsteroidExplosionSound, transform.position);
         }
 
-        // Destroy the entire GameObject after delay
-        Destroy(gameObject, 3f);
+        // Destroy the planet game object
+        Destroy(gameObject, 1f);
     }
-
-
 }
