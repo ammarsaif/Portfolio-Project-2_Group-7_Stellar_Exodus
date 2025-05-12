@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448901d1de7b727469cac0db250622a3, type: 3}
+  m_Name: Spawner
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 7541265951666649391, guid: 5bb3f5397a3081743af96791888610f8, type: 3}
+  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  yPositions:
+  - 1
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5

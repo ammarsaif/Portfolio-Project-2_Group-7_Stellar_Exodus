@@ -22,8 +22,10 @@ public class NewBehaviourScript : MonoBehaviour
     public Animator healthsplash;
     public Animator damagesplash;
 
-    public float defaultYOffsetFromBottom = 1f;
+    public float defaultYOffsetFromBottom;
     public float returnToDefaultSpeed = 2f;
+
+    public GameObject gravityObject;
 
     public bool autoMoveEnabled = true; // auto move in y direction
 
@@ -66,6 +68,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         float x = Input.GetAxisRaw("Horizontal"); // Left & Right movement
         float y = Input.GetAxisRaw("Vertical");   // Up & Down movement
+
         Vector2 direction = new Vector2(x, y).normalized; // Allow full movement control
 
         Move(direction);
@@ -83,7 +86,9 @@ public class NewBehaviourScript : MonoBehaviour
 
         Vector2 pos = transform.position;
         pos.x += direction.x * speed * Time.deltaTime; // X movement
-                                                       //pos.y += ((direction.y * speed) + (autoMoveEnabled ? autoMoveSpeed : 0f)) * Time.deltaTime; // Y movement
+        float verticalSpeed = (direction.y * speed) + (autoMoveEnabled ? autoMoveSpeed : 0f);
+        pos.y += verticalSpeed * Time.deltaTime;
+        //pos.y += ((direction.y * speed * Time.deltaTime) + (autoMoveEnabled ? autoMoveSpeed : 0f)) * Time.deltaTime; // Y movement
 
         if (direction.y != 0)
         {
@@ -100,8 +105,49 @@ public class NewBehaviourScript : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, min.x, max.x); // Clamp X
         pos.y = Mathf.Clamp(pos.y, min.y, max.y); // Clamp Y
 
-        transform.position = pos;
+        if (gravityObject != null)
+        {
+
+            Debug.Log(pos);
+            Vector2 playerToGravity = gravityObject.transform.position - transform.position;
+            Debug.DrawRay(transform.position, playerToGravity, Color.red);
+            float gravityToDirection = Vector3.Distance(gravityObject.transform.position, transform.position);
+            transform.position = pos + playerToGravity.normalized * 0.005f;
+        }
+        else
+        {
+            transform.position = pos;
+        }
+
+
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("WhirlpoolPositive"))
+        {
+
+        }
+    }
+
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("GravityObject"))
+        {
+            gravityObject = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("GravityObject"))
+        {
+            gravityObject = null;
+        }
+    }
+
+    */
 
     void OnCollisionEnter2D(Collision2D collision)
     {

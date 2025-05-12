@@ -8,7 +8,7 @@ public class BlackholeEffect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("PlayerShip"))
+        if (col.CompareTag("Player"))
         {
             StartCoroutine(DestroyShipWithEffect(col.gameObject));
         }
