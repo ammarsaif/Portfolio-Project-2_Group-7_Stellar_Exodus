@@ -6,37 +6,39 @@ public class PlanetExplosionGo : MonoBehaviour
 {
     public GameObject explosionEffect;         // Assign explosion prefab in Inspector
     public AudioClip AsteroidExplosionSound;   // Assign explosion sound in Inspector
+    public float destroyTimer;
+    public float durationToDestroy;
 
-    void OnTriggerEnter2D(Collider2D other)
+
+
+    private void Update()
     {
-        if (other.CompareTag("Bullet")) // If hit by a bullet
+        if (destroyTimer < durationToDestroy)
+        {
+            destroyTimer += Time.deltaTime;
+        }
+        else
         {
             Explode();
-
-            Destroy(other.gameObject); // Destroy the bullet
         }
     }
 
+
     void Explode()
     {
-        // Spawn explosion effect
+        // Disable the SpriteRenderer immediately to hide the planet
+        GetComponent<SpriteRenderer>().enabled = false;
         GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        explosion.transform.SetParent(null); // Detach from planet
-
-        // Play explosion sound at planet's position
+        Destroy(explosion, 2f); // Destroy explosion after 1 second
+        // Play explosion sound
         if (AsteroidExplosionSound != null)
         {
             AudioSource.PlayClipAtPoint(AsteroidExplosionSound, transform.position);
         }
-        else
-        {
-            Debug.LogWarning("Explosion sound not assigned in Inspector.");
-        }
 
-        // Destroy the planet
-        Destroy(gameObject);
-
-        // Destroy explosion effect after 0.5 seconds
-        Destroy(explosion, 0.5f);
+        // Destroy the entire GameObject after delay
+        Destroy(gameObject, 3f);
     }
+
+
 }
