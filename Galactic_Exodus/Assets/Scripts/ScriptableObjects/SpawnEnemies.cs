@@ -23,6 +23,13 @@ public class SpawnEnemies : MonoBehaviour
         {
             GameObject enemyPrefab = spawnerData.enemies[currentID];
 
+            float randomX = Random.Range(-8f, 8f);  // Random X position (left-right)
+            float randomY = Random.Range(2f, 6f);   // Random Y position (above player)
+
+            Vector3 spawnPos = new Vector3(randomX, player.transform.position.y + randomY, 0);
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
+            /*
             // Spawn multiple enemies at random X and Y positions above the player
             for (int i = 0; i <= 1; i++) // number of enemies per spawn
             {
@@ -32,6 +39,8 @@ public class SpawnEnemies : MonoBehaviour
                 Vector3 spawnPos = new Vector3(randomX, player.transform.position.y + randomY, 0);
                 Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
             }
+
+            */
 
             Debug.Log($"Spawned enemies at random positions above Y = {player.transform.position.y}");
 
