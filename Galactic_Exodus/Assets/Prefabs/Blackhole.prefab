@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8463751682136308221}
   - component: {fileID: 1276797376140114795}
-  - component: {fileID: 4929413435416521192}
   - component: {fileID: 4256693381851456383}
   - component: {fileID: -364110580056657306}
+  - component: {fileID: 8600216914012162422}
   m_Layer: 0
   m_Name: Blackhole
   m_TagString: Blackhole
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.6, y: 1.46, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_SortingOrder: -10
+  m_Sprite: {fileID: 21300000, guid: 9ecb8e7595dbf994e8cc4bd2081be4c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,8 +87,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4929413435416521192
-BoxCollider2D:
+--- !u!114 &4256693381851456383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293017617156788569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0fd3eb9b915b7c49b2c533cbee4af8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionGo: {fileID: 3368766315624512177, guid: 748e7ed88159aaa4a9cc2ddadd68a795, type: 3}
+  BlackHoleCollisionSound: {fileID: 8300000, guid: 929fd214252d7034d93c9463bf63e091, type: 3}
+--- !u!114 &-364110580056657306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293017617156788569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37df4501f90f1a643814333943d29382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 1.5
+--- !u!58 &8600216914012162422
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,42 +147,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.32}
-  m_EdgeRadius: 0
---- !u!114 &4256693381851456383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293017617156788569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0fd3eb9b915b7c49b2c533cbee4af8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ExplosionGo: {fileID: 3368766315624512177, guid: 748e7ed88159aaa4a9cc2ddadd68a795, type: 3}
-  BlackHoleCollisionSound: {fileID: 8300000, guid: 929fd214252d7034d93c9463bf63e091, type: 3}
---- !u!114 &-364110580056657306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293017617156788569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37df4501f90f1a643814333943d29382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallSpeed: 1.5
+  m_Radius: 1

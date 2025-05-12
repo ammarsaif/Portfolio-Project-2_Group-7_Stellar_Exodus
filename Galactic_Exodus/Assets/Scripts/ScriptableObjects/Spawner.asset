@@ -15,19 +15,10 @@ MonoBehaviour:
   enemies:
   - {fileID: 7541265951666649391, guid: 5bb3f5397a3081743af96791888610f8, type: 3}
   - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
-  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
-  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
-  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
-  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
-  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
-  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
-  - {fileID: 4931580745300195173, guid: 625a0f1a5a62c2f4da962295adc86bac, type: 3}
+  - {fileID: 5164510253640188215, guid: fbff5c76a70927e48ac0aaf0f951d368, type: 3}
+  - {fileID: 7996794962772799931, guid: d9b43a5651f72e64f8cb5fe9a112d5c8, type: 3}
   yPositions:
   - 1
   - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
+  - 15
+  - 30
