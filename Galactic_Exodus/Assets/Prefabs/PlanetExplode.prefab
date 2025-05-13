@@ -102,8 +102,8 @@ MonoBehaviour:
   maxHealth: 100
   explosionPrefab: {fileID: 3489729414868594938, guid: 82ebe6a3b4f50244ca1d87c24ba06461, type: 3}
   AsteroidExplosionSound: {fileID: 8300000, guid: c401d00c96b512e488d2e3bf5d111509, type: 3}
-  destroyTimer: 3
-  durationToDestroy: 1
+  destroyTimer: 5
+  durationToDestroy: 3
 --- !u!58 &6075109660649009093
 CircleCollider2D:
   m_ObjectHideFlags: 0
