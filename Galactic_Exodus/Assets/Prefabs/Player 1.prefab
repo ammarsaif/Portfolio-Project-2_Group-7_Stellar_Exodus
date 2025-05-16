@@ -181,7 +181,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &783231738344693573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +198,9 @@ MonoBehaviour:
   BulletPosition: {fileID: 4198813949666995379}
   explosionPrefab: {fileID: 3368766315624512177, guid: 748e7ed88159aaa4a9cc2ddadd68a795, type: 3}
   gunFireSound: {fileID: 8300000, guid: 1e940d15337ad1e43b0cc1b2430d7c06, type: 3}
+  TakingDamageSound: {fileID: 0}
+  GainingHealthSound: {fileID: 0}
+  PlayerDestructionSound: {fileID: 0}
   speed: 5
   autoMoveSpeed: 2
   asteriodsplash: {fileID: 0}
@@ -205,6 +208,7 @@ MonoBehaviour:
   damagesplash: {fileID: 0}
   defaultYOffsetFromBottom: 1
   returnToDefaultSpeed: 2
+  gravityObject: {fileID: 0}
   autoMoveEnabled: 1
 --- !u!1 &4198813949666995379
 GameObject:
